@@ -1,1 +1,2 @@
-# lstm
+# lstm playground
+just for fun
