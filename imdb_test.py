@@ -25,25 +25,25 @@ print(len(x_test), 'test sequences')
 
 print(len(x_train[100]))
 
-# print('Pad sequences (samples x time)')
-# x_train = sequence.pad_sequences(x_train, maxlen=maxlen)
-# x_test = sequence.pad_sequences(x_test, maxlen=maxlen)
-# print('x_train shape:', x_train.shape)
-# print('x_test shape:', x_test.shape)
-# y_train = np.array(y_train)
-# y_test = np.array(y_test)
+print('Pad sequences (samples x time)')
+x_train = sequence.pad_sequences(x_train, maxlen=maxlen)
+x_test = sequence.pad_sequences(x_test, maxlen=maxlen)
+print('x_train shape:', x_train.shape)
+print('x_test shape:', x_test.shape)
+y_train = np.array(y_train)
+y_test = np.array(y_test)
 
-# model = Sequential()
-# model.add(Embedding(max_features, 128, input_length=maxlen))
-# model.add(Bidirectional(LSTM(64)))
-# model.add(Dropout(0.5))
-# model.add(Dense(1, activation='sigmoid'))
+model = Sequential()
+model.add(Embedding(max_features, 128, input_length=maxlen))
+model.add(Bidirectional(LSTM(64)))
+model.add(Dropout(0.5))
+model.add(Dense(1, activation='sigmoid'))
 
-# # try using different optimizers and different optimizer configs
-# model.compile('adam', 'binary_crossentropy', metrics=['accuracy'])
+# try using different optimizers and different optimizer configs
+model.compile('adam', 'binary_crossentropy', metrics=['accuracy'])
 
-# print('Train...')
-# model.fit(x_train, y_train,
-#           batch_size=batch_size,
-#           epochs=4,
-# validation_data=[x_test, y_test])
+print('Train...')
+model.fit(x_train, y_train,
+          batch_size=batch_size,
+          epochs=4,
+validation_data=[x_test, y_test])
